@@ -3,12 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <title>Productos - MouseBuys</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
+      /* Reset básico */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
       html,
       body {
         min-height: 100vh;
@@ -21,6 +28,7 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         color: white;
+        overflow-x: hidden; /* Evita scroll horizontal */
       }
 
       .pagina {
@@ -28,15 +36,19 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
       }
 
       header {
         padding: 20px;
         text-align: center;
-        font-size: 36px;
+        font-size: 2.25rem; /* 36px */
         font-weight: bold;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 8px;
       }
 
       .navbar {
@@ -45,6 +57,8 @@
         display: flex;
         justify-content: center;
         padding: 15px 0;
+        border-radius: 8px;
+        margin-top: 15px;
       }
 
       .navitems {
@@ -53,6 +67,8 @@
         gap: 40px;
         margin: 0;
         padding: 0;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .navitems li a {
@@ -75,14 +91,14 @@
         gap: 20px;
         flex-wrap: wrap;
         justify-content: center;
-        width: 90%;
-        max-width: 1200px;
+        width: 100%;
       }
 
       .filtros select {
         padding: 10px;
         font-size: 16px;
         border-radius: 8px;
+        min-width: 160px;
       }
 
       .contenedor {
@@ -90,9 +106,8 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 30px;
-        width: 90%;
-        max-width: 1200px;
-        margin: 40px auto;
+        width: 100%;
+        margin-top: 40px;
       }
 
       .contenedor figure {
@@ -101,6 +116,11 @@
         padding: 15px;
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s;
+      }
+
+      .contenedor figure:hover {
+        transform: scale(1.03);
       }
 
       .contenedor img {
@@ -128,6 +148,48 @@
         background-color: rgba(0, 0, 0, 0.6);
         width: 100%;
         margin-top: 30px;
+        border-radius: 8px;
+      }
+
+      /* Media Queries para móviles */
+      @media (max-width: 768px) {
+        header {
+          font-size: 1.75rem;
+        }
+
+        .navitems {
+          gap: 20px;
+        }
+
+        .filtros {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .filtros select {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .contenedor {
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+          gap: 20px;
+        }
+
+        .contenedor img {
+          max-height: 160px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navitems {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        footer {
+          font-size: 0.9rem;
+        }
       }
     </style>
     <!-- React + Babel -->
@@ -200,13 +262,13 @@
             <nav className="navbar">
               <ul className="navitems">
                 <li>
-                  <a href="#">Inicio</a>
+                  <a href="index.html">Inicio</a>
                 </li>
                 <li>
-                  <a href="#">Productos</a>
+                  <a href="productos.html">Productos</a>
                 </li>
                 <li>
-                  <a href="#">Contacto</a>
+                  <a href="contacto.html">Contacto</a>
                 </li>
               </ul>
             </nav>
@@ -249,3 +311,4 @@
     </script>
   </body>
 </html>
+
